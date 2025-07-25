@@ -14,9 +14,12 @@ const Chat = () => {
     form.append('pdf', file);
 
     const res = await API.post('/pdf/upload', form);
-    const serverPath = `http://localhost:5000/${res.data.filePath}`; // ✅ make file path absolute
+    console.log('Upload response:', res.data); // ✅ Log it to debug
+
+    const serverPath = `http://localhost:5000${res.data.url}`; // ✅ Fix key name here
     setPdfPath(serverPath);
   };
+
 
   return (
     <div className="p-6">

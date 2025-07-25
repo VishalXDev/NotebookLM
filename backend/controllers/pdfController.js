@@ -1,5 +1,5 @@
-const fs = require('fs');
-const pdfParse = require('pdf-parse');
+const fs = require("fs");
+const pdfParse = require("pdf-parse");
 
 exports.uploadPDF = async (req, res) => {
   try {
@@ -9,11 +9,13 @@ exports.uploadPDF = async (req, res) => {
 
     // Extracted content: pdfData.text
     res.status(200).json({
-      message: 'PDF uploaded successfully',
+      message: "PDF uploaded successfully",
       text: pdfData.text,
-      filePath,
+      url: `/${filePath.replace(/\\/g, "/")}`, // ✅ consistent URL path
     });
   } catch (err) {
-    res.status(500).json({ error: 'Failed to process PDF', details: err.message });
+    res
+      .status(500)
+      .json({ error: "Failed to process PDF", details: err.message });
   }
 };
