@@ -1,0 +1,17 @@
+# Ignore all node_modules recursively
+**/node_modules/
+
+# Ignore all env files
+**/.env
+
+# Ignore Vite/React build artifacts
+**/dist/
+**/.vite/
+
+# Ignore backend uploads
+backend/uploads/
+
+# Editor/system files
+.DS_Store
+.vscode/
+.idea/
