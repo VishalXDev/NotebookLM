@@ -14,19 +14,27 @@ const Chat = () => {
     form.append('pdf', file);
 
     const res = await API.post('/pdf/upload', form);
-    console.log('Upload response:', res.data); // ✅ Log it to debug
+    console.log('Upload response:', res.data);
 
-    const serverPath = `http://localhost:5000${res.data.url}`; // ✅ Fix key name here
+    // ✅ Use correct key and full URL
+    const serverPath = `http://localhost:5000${res.data.url}`;
+    console.log("📄 PDF Viewer URL:", serverPath); // Debug
     setPdfPath(serverPath);
   };
-
 
   return (
     <div className="p-6">
       {!pdfPath && (
         <div className="space-y-4">
-          <input type="file" accept="application/pdf" onChange={(e) => setFile(e.target.files[0])} />
-          <button onClick={upload} className="bg-green-600 text-white px-4 py-2 rounded">
+          <input
+            type="file"
+            accept="application/pdf"
+            onChange={(e) => setFile(e.target.files[0])}
+          />
+          <button
+            onClick={upload}
+            className="bg-green-600 text-white px-4 py-2 rounded"
+          >
             Upload PDF
           </button>
         </div>

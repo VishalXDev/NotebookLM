@@ -1,9 +1,13 @@
 import { Document, Page } from 'react-pdf';
-import { useState } from 'react';
-import '../pdf-worker'; // 👈 Loads worker config
+import { useState, useEffect } from 'react';
+import '../pdf-worker'; // 👈 Loads PDF.js worker
 
 const PDFViewer = ({ file, pageNumber, setNumPages }) => {
   const [error, setError] = useState(null);
+
+  useEffect(() => {
+    console.log("🔍 PDFViewer received file URL:", file);
+  }, [file]);
 
   return (
     <div className="w-full flex justify-center mt-4">

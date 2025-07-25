@@ -9,12 +9,12 @@ dotenv.config();
 
 const app = express();
 
-// Allow CORS and JSON
+// ✅ CORS
 app.use(cors());
 app.use(express.json());
 
-// ✅ Serve uploaded PDFs from /uploads
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+// ✅ Serve static files from /uploads
+app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); // <--- Important!
 
 // ✅ API Routes
 app.use('/api/pdf', pdfRoutes);

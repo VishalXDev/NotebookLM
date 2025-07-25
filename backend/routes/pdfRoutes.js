@@ -4,7 +4,6 @@ const multer = require('multer');
 const path = require('path');
 const { uploadPDF } = require('../controllers/pdfController');
 
-// Save PDFs to uploads folder
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, 'uploads/');

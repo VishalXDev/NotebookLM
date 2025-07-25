@@ -7,11 +7,11 @@ exports.uploadPDF = async (req, res) => {
     const dataBuffer = fs.readFileSync(filePath);
     const pdfData = await pdfParse(dataBuffer);
 
-    // Extracted content: pdfData.text
+    // ✅ Clean and simplified URL
     res.status(200).json({
       message: "PDF uploaded successfully",
       text: pdfData.text,
-      url: `/${filePath.replace(/\\/g, "/")}`, // ✅ consistent URL path
+      url: `/uploads/${req.file.filename}`, // ✅ Always works
     });
   } catch (err) {
     res
